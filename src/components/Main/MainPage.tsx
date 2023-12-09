@@ -3,7 +3,7 @@ import CryptoList from '../CryptoList/CryptoList'
 import { cryptosAPI } from '../../services/cryptosService'
 import styles from '../../Index.module.scss'
 const MainPage = () => {
-  const { data: cryptos, error, isLoading } = cryptosAPI.useFetchAllCryptosQuery(3)
+  const { data: cryptos, error, isLoading } = cryptosAPI.useFetchAllCryptosQuery(100)
   return (
     <div className={styles.app}>
       {error ? (

@@ -5,6 +5,8 @@ interface AssetsListProps {
   items: ICryptos
 }
 const CryptoList: FC<AssetsListProps> = ({ items }) => {
+  const cryptos = items.data.filter((item) => +item.priceUsd >= 0.01)
+  console.log(cryptos)
   return (
     <table>
       <thead>
@@ -18,8 +20,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
         </tr>
       </thead>
       <tbody>
-        {items.data &&
-          items.data.map((item) => (
+        {cryptos &&
+          cryptos.map((item) => (
             <tr key={item.id}>
               <td>{item.symbol}</td>
               <td>{item.name}</td>
