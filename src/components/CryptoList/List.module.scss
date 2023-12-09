@@ -1,0 +1,15 @@
+
+.item {
+  margin: 5px;
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item div {
+  margin: 5px;
+}
+
+.item + .item {
+  margin: 5px;
+}
