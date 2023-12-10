@@ -41,7 +41,7 @@ const AreaChart: FC<AreaChartProps> = ({ histories }) => {
     },
   }
   const data = {
-    labels: histories.map((history) => moment(history.date).format('DD.MM HH:MM')),
+    labels: histories.map((history) => moment(history.date).format('DD.MM.YYYY')),
     datasets: [
       {
         fill: true,

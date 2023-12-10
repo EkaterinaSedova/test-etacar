@@ -9,15 +9,15 @@ import AreaChart from '../Charts/AreaChart'
 const SingleCrypto = () => {
   const [interval, setInterval] = useState('d1')
   const { id } = useParams()
-  //const start = Math.floor((Date.now() - 24 * 60 * 60 * 1000) / 1000).toString() // Время начала (timestamp в виде строки)
-  //const end = Math.floor(Date.now() / 1000).toString() // Текущее время (timestamp в виде строки)
   const navigate = useNavigate()
-  //const { data: histories } = id
-  //  ? cryptosAPI.useFetchCryptoHistoryQuery({ id: id, interval: interval, start: start, end: end })
-  //  : { data: undefined }
   const { data: histories } = id
     ? cryptosAPI.useFetchCryptoHistoryQuery({ id: id, interval: interval })
     : { data: undefined }
+  const handleSelectChange = ({ target: { value } }: React.ChangeEvent<HTMLSelectElement>) => {
+    if (value === 'hour') setInterval('h1')
+    if (value === '12 hours') setInterval('h12')
+    if (value === '1 day') setInterval('d1')
+  }
   const handleBackClick = () => {
     navigate(MAIN_ROUTE)
   }
@@ -74,6 +74,13 @@ const SingleCrypto = () => {
                   <>No info.</>
                 )}
               </div>
+            </div>
+            <div>
+              <select onChange={handleSelectChange}>
+                <option id={'1 day'}>1 day</option>
+                <option id={'12 hours'}>12 hours</option>
+                <option id={'hour'}>hour</option>
+              </select>
             </div>
             {histories ? <AreaChart histories={histories.data} /> : <>History is not available.</>}
           </div>
