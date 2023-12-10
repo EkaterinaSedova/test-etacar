@@ -1,14 +1,44 @@
-.item {
-  margin: 5px;
-  background-color: lightblue;
+.cryptosContainer {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
 }
 
-.item div {
-  margin: 5px;
+table {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: auto;
 }
 
-.item + .item {
-  margin: 5px;
+th {
+  padding: 20px;
+  vertical-align: middle;
+  text-align: center;
+  height: 36px;
+  border-bottom: 1px solid lightgray;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: rgba(211, 211, 211, 0.28);
+}
+
+td {
+  padding: 10px 8px;
+  vertical-align: middle;
+  text-align: center;
+  border: 2px solid transparent;
+  border-bottom: 1px solid lightgray;
+}
+
+table button {
+  background-color: #ffd399;
+}
+
+table button:hover {
+  background-color: #eebc7b;
 }
