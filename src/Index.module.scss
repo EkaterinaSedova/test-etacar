@@ -13,3 +13,28 @@ button {
   padding: 16px 24px;
   max-width: 150px;
 }
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchField {
+  background-color: white;
+  position: absolute;
+  max-height: 300px;
+  width: 300px;
+  overflow-y: auto;
+  margin-top: 35px;
+  padding: 5px;
+  border: 1px solid #583101;
+}
+
+input {
+  font-family: Abel;
+  font-size: 20px;
+  border: 2px solid black;
+  border-radius: 10px;
+}

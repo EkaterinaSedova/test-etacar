@@ -1,12 +1,22 @@
-import React, { FC, useState } from 'react'
-import { ICryptos } from '../../models/ICryptos'
+import React, { FC, useEffect, useState } from 'react'
 import styles from './List.module.scss'
+import { ICryptoData } from '../../models/ICryptos'
+import { useFetchImageQuery } from '../../services/cryptosService'
 
 interface AssetsListProps {
-  items: ICryptos
+  items: ICryptoData[]
 }
 const CryptoList: FC<AssetsListProps> = ({ items }) => {
-  const [cryptos, setCryptos] = useState(items.data.filter((item) => +item.priceUsd >= 0.01))
+  useEffect(() => {
+    setCryptos(
+      items.filter((item) => {
+        return (
+          item.marketCapUsd !== null && item.changePercent24Hr !== null && +item.priceUsd >= 0.01
+        )
+      })
+    )
+  }, [items])
+  const [cryptos, setCryptos] = useState(items.filter((item) => +item.priceUsd >= 0.01))
   const [price, setPrice] = useState('desc')
   const [cap, setCap] = useState('desc')
   const [percent, setPercent] = useState('desc')
@@ -70,11 +80,16 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
       }
     }
   }
+  const useCryptoImage = (cryptoSymbol: string) => {
+    const { data } = useFetchImageQuery(cryptoSymbol.toLowerCase())
+    return data
+  }
   return (
     <div className={styles.cryptosContainer}>
       <table>
         <thead>
           <tr>
+            <th>Logo</th>
             <th>Symbol</th>
             <th>Name</th>
             <th
@@ -105,6 +120,9 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           {cryptos &&
             cryptos.map((item) => (
               <tr key={item.id}>
+                <td>
+                  <img src={useCryptoImage(item.symbol)} />
+                </td>
                 <td>{item.symbol}</td>
                 <td>{item.name}</td>
                 <td>{parseFloat(item.priceUsd).toFixed(2)}$</td>
