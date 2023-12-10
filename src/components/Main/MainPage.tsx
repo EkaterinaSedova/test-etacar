@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import CryptoList from '../CryptoList/CryptoList'
+import CryptoList from '../Cryptos/CryptoList'
 import { cryptosAPI } from '../../services/cryptosService'
 import styles from '../../Index.module.scss'
+import { CRYPTO_ROUTE } from '../../routing/paths'
+import { useNavigate } from 'react-router-dom'
 const MainPage = () => {
   const limit = 100
+  const navigate = useNavigate()
   const [page, setPage] = useState(1)
   const [offset, setOffset] = useState(0)
   const [searchValue, setSearchValue] = useState('')
@@ -20,6 +23,9 @@ const MainPage = () => {
   }
   const handleSearch = ({ target: { value } }: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(value)
+  }
+  const handleSearchClick = (id: string) => {
+    navigate(CRYPTO_ROUTE + `/${id}`)
   }
   const handleNextClick = () => {
     setPage(page + 1)
@@ -53,7 +59,16 @@ const MainPage = () => {
             {searchValue && (
               <div className={styles.searchField}>
                 {data && data.data.length ? (
-                  data.data.map((item) => <p key={item.id}>{item.name}</p>)
+                  data.data.map((item) => (
+                    <p
+                      key={item.id}
+                      onClick={() => {
+                        handleSearchClick(item.id)
+                      }}
+                    >
+                      {item.name}
+                    </p>
+                  ))
                 ) : (
                   <p>No results.</p>
                 )}

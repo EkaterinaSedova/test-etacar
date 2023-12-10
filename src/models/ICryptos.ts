@@ -18,3 +18,20 @@ export interface ICryptos {
   data: ICryptoData[]
   timestamp: string
 }
+
+export interface ICrypto {
+  data: ICryptoData
+  timestamp: string
+}
+
+export interface IHistory {
+  data: IHistoryData[]
+  timestamp: string
+}
+
+export interface IHistoryData {
+  priceUsd: string
+  time: string
+  circulatingSupply: string
+  date: string
+}

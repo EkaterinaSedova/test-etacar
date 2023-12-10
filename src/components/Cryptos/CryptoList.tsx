@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useState } from 'react'
-import styles from './List.module.scss'
+import styles from './Crypto.module.scss'
 import { ICryptoData } from '../../models/ICryptos'
-import { useFetchImageQuery } from '../../services/cryptosService'
+import { useNavigate } from 'react-router-dom'
+import { CRYPTO_ROUTE } from '../../routing/paths'
 
 interface AssetsListProps {
   items: ICryptoData[]
 }
 const CryptoList: FC<AssetsListProps> = ({ items }) => {
+  const navigate = useNavigate()
   useEffect(() => {
     setCryptos(
       items.filter((item) => {
@@ -80,9 +82,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
       }
     }
   }
-  const useCryptoImage = (cryptoSymbol: string) => {
-    const { data } = useFetchImageQuery(cryptoSymbol.toLowerCase())
-    return data
+  const handleTrClick = (id: string) => {
+    navigate(CRYPTO_ROUTE + `/${id}`)
   }
   return (
     <div className={styles.cryptosContainer}>
@@ -119,10 +120,13 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
         <tbody>
           {cryptos &&
             cryptos.map((item) => (
-              <tr key={item.id}>
-                <td>
-                  <img src={useCryptoImage(item.symbol)} />
-                </td>
+              <tr
+                key={item.id}
+                onClick={() => {
+                  handleTrClick(item.id)
+                }}
+              >
+                <td></td>
                 <td>{item.symbol}</td>
                 <td>{item.name}</td>
                 <td>{parseFloat(item.priceUsd).toFixed(2)}$</td>

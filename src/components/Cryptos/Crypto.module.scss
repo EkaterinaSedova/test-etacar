@@ -35,10 +35,30 @@ td {
   border-bottom: 1px solid lightgray;
 }
 
-table button {
+table button,
+.coinButton {
   background-color: #ffd399;
 }
 
-table button:hover {
+table button:hover,
+.coinButton:hover {
   background-color: #eebc7b;
+}
+
+.coinContainer {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.coinHeader {
+  margin: 5px;
+  font-weight: bold;
+}
+
+.coinContainer div {
+  margin: 5px;
+  display: flex;
+  justify-content: flex-start;
+  justify-items: center;
 }
