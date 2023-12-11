@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import styles from '../../Index.module.scss'
+import styles from './Search.module.scss'
 import { CRYPTO_ROUTE } from '../../routing/paths'
 import { cryptosAPI } from '../../services/cryptosService'
 import { useNavigate } from 'react-router-dom'
@@ -17,6 +17,7 @@ const Search = () => {
   return (
     <div className={styles.searchContainer}>
       <input
+        className={styles.searchInput}
         type="search"
         name="search"
         placeholder="Search..."
@@ -28,14 +29,15 @@ const Search = () => {
         <div className={styles.searchField}>
           {data && data.data.length ? (
             data.data.map((item) => (
-              <p
+              <div
                 key={item.id}
+                className={styles.searchItem}
                 onClick={() => {
                   handleSearchClick(item.id)
                 }}
               >
                 {item.name}
-              </p>
+              </div>
             ))
           ) : (
             <p>No results.</p>

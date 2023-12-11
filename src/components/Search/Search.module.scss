@@ -1,0 +1,34 @@
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchInput {
+  font-family: Abel;
+  padding: 10px;
+  font-size: 30px;
+  font-style: italic;
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  margin: 0 10px;
+  width: 500px;
+}
+
+.searchField {
+  font-size: 28px;
+  position: absolute;
+  z-index: 1;
+  background-color: #ececec;
+  max-height: 300px;
+  width: 488px;
+  overflow-y: auto;
+  margin-top: 62px;
+  padding: 15px;
+}
+
+.searchItem:hover {
+  cursor: pointer;
+  background-color: #f3f3f3;
+  padding: 10px;
+}
