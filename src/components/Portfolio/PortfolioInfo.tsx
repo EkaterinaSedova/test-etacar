@@ -29,7 +29,14 @@ const PortfolioInfo = () => {
         <span className={styles.portfolioPriceNumber}>{portfolioPrice.toFixed(2)}</span>
         <span className={styles.portfolioPriceUsd}>USD</span>
       </div>
-      <div className={styles.portfolioClickMe} onClick={() => {handleClick()}}>Click here to know more about your portfolio!</div>
+      <div
+        className={styles.portfolioClickMe}
+        onClick={() => {
+          handleClick()
+        }}
+      >
+        Click here to know more about your portfolio!
+      </div>
     </div>
   )
 }

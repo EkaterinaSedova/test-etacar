@@ -4,7 +4,7 @@ import { cryptosAPI } from '../../services/cryptosService'
 import styles from '../../Index.module.scss'
 import Header from '../Header/Header'
 import Modal from '../Modals/Modal'
-import Search from "../Search/Search";
+import Search from '../Search/Search'
 const MainPage = () => {
   const limit = 100
   const [page, setPage] = useState(1)
