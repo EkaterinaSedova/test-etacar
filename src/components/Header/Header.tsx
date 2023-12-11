@@ -2,6 +2,7 @@ import React from 'react'
 import { cryptosAPI } from '../../services/cryptosService'
 import CryptoHeaderList from '../Cryptos/CryptoHeaderList'
 import PortfolioInfo from '../Portfolio/PortfolioInfo'
+import styles from './Header.module.scss'
 
 const Header = () => {
   const {
@@ -10,7 +11,7 @@ const Header = () => {
     isLoading,
   } = cryptosAPI.useFetchAllCryptosQuery({ limit: 3, offset: 0 })
   return (
-    <div>
+    <div className={styles.headerContainer}>
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (

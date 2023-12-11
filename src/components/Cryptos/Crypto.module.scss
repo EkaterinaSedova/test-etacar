@@ -62,3 +62,34 @@ table button:hover,
   justify-content: flex-start;
   justify-items: center;
 }
+
+.headerCoinContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerCoinTitle {
+  margin: 0 20px 20px 0;
+  font-weight: bold;
+  font-size: 32px;
+  font-style: italic;
+}
+
+.headerCoinName {
+  display: flex;
+  font-weight: bold;
+  font-size: 28px;
+  color: #72645b;
+}
+
+.headerCoinPrice {
+  margin-left: 15px;
+}
+
+.headerCoinRank {
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 28px;
+  color: black;
+}
