@@ -20,65 +20,89 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
     )
   }, [items])
   const [cryptos, setCryptos] = useState(items.filter((item) => +item.priceUsd >= 0.01))
-  const [price, setPrice] = useState('desc')
-  const [cap, setCap] = useState('desc')
-  const [percent, setPercent] = useState('desc')
+  const [price, setPrice] = useState('=')
+  const [cap, setCap] = useState('=')
+  const [percent, setPercent] = useState('=')
   const handlePriceClick = () => {
     switch (price) {
-      case 'desc': {
+      case '↓': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(a.priceUsd) - parseFloat(b.priceUsd))
         setCryptos(sortedCryptos)
-        setPrice('asc')
+        setPrice('↑')
         break
       }
-      case 'asc': {
+      case '=': {
+        const sortedCryptos = cryptos
+          .slice()
+          .sort((a, b) => parseFloat(a.priceUsd) - parseFloat(b.priceUsd))
+        setCryptos(sortedCryptos)
+        setPrice('↑')
+        break
+      }
+      case '↑': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(b.priceUsd) - parseFloat(a.priceUsd))
         setCryptos(sortedCryptos)
-        setPrice('desc')
+        setPrice('↓')
         break
       }
     }
   }
   const handleMarketCapClick = () => {
     switch (cap) {
-      case 'desc': {
+      case '↓': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(a.marketCapUsd) - parseFloat(b.marketCapUsd))
         setCryptos(sortedCryptos)
-        setCap('asc')
+        setCap('↑')
         break
       }
-      case 'asc': {
+      case '=': {
+        const sortedCryptos = cryptos
+          .slice()
+          .sort((a, b) => parseFloat(a.marketCapUsd) - parseFloat(b.marketCapUsd))
+        setCryptos(sortedCryptos)
+        setCap('↑')
+        break
+      }
+      case '↑': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(b.marketCapUsd) - parseFloat(a.marketCapUsd))
         setCryptos(sortedCryptos)
-        setCap('desc')
+        setCap('↓')
         break
       }
     }
   }
   const handleChangePercentClick = () => {
     switch (percent) {
-      case 'desc': {
+      case '↓': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(a.changePercent24Hr) - parseFloat(b.changePercent24Hr))
         setCryptos(sortedCryptos)
-        setPercent('asc')
+        setPercent('↑')
         break
       }
-      case 'asc': {
+      case '=': {
+        const sortedCryptos = cryptos
+          .slice()
+          .sort((a, b) => parseFloat(a.changePercent24Hr) - parseFloat(b.changePercent24Hr))
+        setCryptos(sortedCryptos)
+        setPercent('↑')
+        break
+      }
+      case '↑': {
         const sortedCryptos = cryptos
           .slice()
           .sort((a, b) => parseFloat(b.changePercent24Hr) - parseFloat(a.changePercent24Hr))
         setCryptos(sortedCryptos)
-        setPercent('desc')
+        setPercent('↓')
         break
       }
     }
@@ -99,21 +123,24 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
                 handlePriceClick()
               }}
             >
-              Price
+              <span>Price</span>
+              <span className={styles.sort}>{price}</span>
             </th>
             <th
               onClick={() => {
                 handleMarketCapClick()
               }}
             >
-              Market capitalization
+              <span>Market capitalization</span>
+              <span className={styles.sort}>{cap}</span>
             </th>
             <th
               onClick={() => {
                 handleChangePercentClick()
               }}
             >
-              Price change in 24 hours
+              <span>Price change in 24 hours</span>
+              <span className={styles.sort}>{percent}</span>
             </th>
             <th></th>
           </tr>

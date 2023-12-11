@@ -5,10 +5,12 @@
 }
 
 table {
-  table-layout: fixed;
+  width: 100%;
+  margin-top: 20px;
+  table-layout: auto;
   border-collapse: separate;
   border-spacing: 0;
-  margin: auto;
+  border: 1px solid lightgray;
 }
 
 th {
@@ -19,6 +21,14 @@ th {
   border-bottom: 1px solid lightgray;
 }
 
+th:nth-child(even) {
+  background-color: #f5f2ed;
+}
+
+th:nth-child(odd) {
+  background-color: #e5ddd7;
+}
+
 tbody tr {
   cursor: pointer;
 }
@@ -27,12 +37,27 @@ tbody tr:hover {
   background-color: rgba(211, 211, 211, 0.28);
 }
 
+td:nth-child(odd) {
+  background-color: rgba(245, 242, 237, 0.48);
+}
+
+td:nth-child(even) {
+  background-color: rgba(229, 221, 215, 0.42);
+}
+
 td {
   padding: 10px 8px;
   vertical-align: middle;
   text-align: center;
   border: 2px solid transparent;
   border-bottom: 1px solid lightgray;
+}
+
+.sort {
+  cursor: pointer;
+  color: gray;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 table button,

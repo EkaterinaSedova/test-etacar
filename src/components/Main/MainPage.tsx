@@ -43,16 +43,18 @@ const MainPage = () => {
         <>
           <Search />
           <CryptoList items={[...cryptos.data]} />
-          {page > 1 ? (
-            <button onClick={() => handlePrevClick()}>prev</button>
-          ) : (
-            <button disabled>prev</button>
-          )}
-          {isAvailable() ? (
-            <button onClick={() => handleNextClick()}>next</button>
-          ) : (
-            <button disabled>next</button>
-          )}
+          <div className={styles.otherButtons}>
+            {page > 1 ? (
+              <button onClick={() => handlePrevClick()}>Go to previous page</button>
+            ) : (
+              <button disabled>Go to previous page</button>
+            )}
+            {isAvailable() ? (
+              <button onClick={() => handleNextClick()}>Go to next page</button>
+            ) : (
+              <button disabled>Go to next page</button>
+            )}
+          </div>
         </>
       ) : null}
     </div>
