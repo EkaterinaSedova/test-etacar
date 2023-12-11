@@ -21,6 +21,8 @@ button {
 }
 
 .searchField {
+  position: absolute;
+  z-index: 1;
   background-color: white;
   max-height: 300px;
   width: 300px;
