@@ -1,0 +1,31 @@
+.portfolioTitle {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+.portfolioPrice {
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.portfolioPriceNumber {
+  margin: 10px;
+}
+
+.portfolioPriceUsd {
+  font-weight: bold;
+}
+
+.portfolioClickMe {
+  cursor: pointer;
+  word-wrap: break-word;
+  color: gray;
+  text-decoration: underline;
+}
+
+.portfolioContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+}
