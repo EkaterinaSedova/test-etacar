@@ -3,6 +3,7 @@ import styles from './Crypto.module.scss'
 import { ICryptoData } from '../../models/ICryptos'
 import { useNavigate } from 'react-router-dom'
 import { CRYPTO_ROUTE } from '../../routing/paths'
+import ButtonAdd from '../Buttons/ButtonAdd'
 
 interface AssetsListProps {
   items: ICryptoData[]
@@ -120,20 +121,51 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
         <tbody>
           {cryptos &&
             cryptos.map((item) => (
-              <tr
-                key={item.id}
-                onClick={() => {
-                  handleTrClick(item.id)
-                }}
-              >
+              <tr key={item.id}>
                 <td></td>
-                <td>{item.symbol}</td>
-                <td>{item.name}</td>
-                <td>{parseFloat(item.priceUsd).toFixed(2)}$</td>
-                <td>{parseFloat(item.marketCapUsd).toFixed(0)}$</td>
-                <td>{parseFloat(item.changePercent24Hr).toFixed(2)}%</td>
+                <td
+                  onClick={() => {
+                    handleTrClick(item.id)
+                  }}
+                >
+                  {item.symbol}
+                </td>
+                <td
+                  onClick={() => {
+                    handleTrClick(item.id)
+                  }}
+                >
+                  {item.name}
+                </td>
+                <td
+                  onClick={() => {
+                    handleTrClick(item.id)
+                  }}
+                >
+                  {parseFloat(item.priceUsd)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
+                  $
+                </td>
+                <td
+                  onClick={() => {
+                    handleTrClick(item.id)
+                  }}
+                >
+                  {parseFloat(item.marketCapUsd)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
+                  $
+                </td>
+                <td
+                  onClick={() => {
+                    handleTrClick(item.id)
+                  }}
+                >
+                  {parseFloat(item.changePercent24Hr).toFixed(2)}%
+                </td>
                 <td>
-                  <button>add</button>
+                  <ButtonAdd coin={item} />
                 </td>
               </tr>
             ))}

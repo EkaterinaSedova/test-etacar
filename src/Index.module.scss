@@ -15,7 +15,6 @@ button {
 }
 
 .searchContainer {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +22,6 @@ button {
 
 .searchField {
   background-color: white;
-  position: absolute;
   max-height: 300px;
   width: 300px;
   overflow-y: auto;
@@ -37,4 +35,5 @@ input {
   font-size: 20px;
   border: 2px solid black;
   border-radius: 10px;
+  margin: 0 10px;
 }

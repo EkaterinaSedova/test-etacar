@@ -6,6 +6,8 @@ import styles from './Crypto.module.scss'
 import { MAIN_ROUTE } from '../../routing/paths'
 import AreaChart from '../Charts/AreaChart'
 import moment from 'moment'
+import ButtonAdd from '../Buttons/ButtonAdd'
+import Modal from '../Modals/Modal'
 
 const SingleCrypto = () => {
   const [interval] = useState('m5')
@@ -31,6 +33,7 @@ const SingleCrypto = () => {
     : { data: undefined, isLoading: false, error: null }
   return (
     <div className={globalStyles.app}>
+      <Modal />
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
@@ -39,7 +42,7 @@ const SingleCrypto = () => {
         <>
           <div className={styles.coinContainer}>
             <h1>{data.data.name}</h1>
-            <button className={styles.coinButton}>add</button>
+            <ButtonAdd coin={data.data} />
             <div>
               <div className={styles.coinHeader}>Symbol:</div>
               <div>{data.data.symbol}</div>

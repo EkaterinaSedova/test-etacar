@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { cryptosAPI, imagesAPI } from '../services/cryptosService'
+import modalSlice from './ModalSlice'
 
 const rootReducer = combineReducers({
   [cryptosAPI.reducerPath]: cryptosAPI.reducer,
   [imagesAPI.reducerPath]: imagesAPI.reducer,
+  modal: modalSlice,
 })
 
 export const setupStore = () => {

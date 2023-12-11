@@ -4,6 +4,8 @@ import { cryptosAPI } from '../../services/cryptosService'
 import styles from '../../Index.module.scss'
 import { CRYPTO_ROUTE } from '../../routing/paths'
 import { useNavigate } from 'react-router-dom'
+import Header from '../Header/Header'
+import Modal from '../Modals/Modal'
 const MainPage = () => {
   const limit = 100
   const navigate = useNavigate()
@@ -41,6 +43,8 @@ const MainPage = () => {
 
   return (
     <div className={styles.app}>
+      <Modal />
+      <Header />
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
