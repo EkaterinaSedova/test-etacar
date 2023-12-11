@@ -8,6 +8,7 @@ import AreaChart from '../Charts/AreaChart'
 import moment from 'moment'
 import ButtonAdd from '../Buttons/ButtonAdd'
 import Modal from '../Modals/Modal'
+import OtherButton from "../Buttons/OtherButton";
 
 const SingleCrypto = () => {
   const [interval] = useState('m5')
@@ -92,15 +93,11 @@ const SingleCrypto = () => {
             </div>
             {histories ? <AreaChart histories={histories.data} /> : <>History is not available.</>}
           </div>
+          <div onClick={() => {handleBackClick()}}>
+            <OtherButton text={'Go back'}/>
+          </div>
         </>
       ) : null}
-      <button
-        onClick={() => {
-          handleBackClick()
-        }}
-      >
-        back
-      </button>
     </div>
   )
 }
