@@ -32,11 +32,16 @@ export const cryptosAPI = createApi({
         url: `assets/${id}`,
       }),
     }),
-    fetchCryptoHistory: build.query<IHistory, { id: string; interval: string }>({
-      query: ({ id, interval }) => ({
+    fetchCryptoHistory: build.query<
+      IHistory,
+      { id: string; interval: string; start: number; end: number }
+    >({
+      query: ({ id, interval, start, end }) => ({
         url: `assets/${id}/history`,
         params: {
           interval: interval,
+          start: start,
+          end: end,
         },
       }),
     }),

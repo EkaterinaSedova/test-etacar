@@ -31,7 +31,7 @@ export interface IHistory {
 
 export interface IHistoryData {
   priceUsd: string
-  time: string
+  time: number
   circulatingSupply: string
   date: string
 }

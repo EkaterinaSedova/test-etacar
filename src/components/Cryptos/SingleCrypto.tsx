@@ -5,18 +5,23 @@ import globalStyles from '../../Index.module.scss'
 import styles from './Crypto.module.scss'
 import { MAIN_ROUTE } from '../../routing/paths'
 import AreaChart from '../Charts/AreaChart'
+import moment from 'moment'
 
 const SingleCrypto = () => {
-  const [interval, setInterval] = useState('d1')
+  const [interval] = useState('m5')
   const { id } = useParams()
   const navigate = useNavigate()
-  const { data: histories } = id
-    ? cryptosAPI.useFetchCryptoHistoryQuery({ id: id, interval: interval })
+  const [end, setEnd] = useState(moment().valueOf())
+  const [start, setStart] = useState(moment().subtract(1, 'day').valueOf())
+  const historyQuery = id
+    ? cryptosAPI.useFetchCryptoHistoryQuery({ id: id, interval: interval, start: start, end: end })
     : { data: undefined }
+  const histories = historyQuery.data
   const handleSelectChange = ({ target: { value } }: React.ChangeEvent<HTMLSelectElement>) => {
-    if (value === 'hour') setInterval('h1')
-    if (value === '12 hours') setInterval('h12')
-    if (value === '1 day') setInterval('d1')
+    if (value === 'hour') setStart(moment().subtract(1, 'hour').valueOf())
+    if (value === '12 hours') setStart(moment().subtract(12, 'hours').valueOf())
+    if (value === '1 day') setStart(moment().subtract(1, 'day').valueOf())
+    setEnd(moment().valueOf())
   }
   const handleBackClick = () => {
     navigate(MAIN_ROUTE)
