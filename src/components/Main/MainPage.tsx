@@ -5,7 +5,7 @@ import styles from '../../Index.module.scss'
 import Header from '../Header/Header'
 import Modal from '../Modals/Modal'
 import Search from '../Search/Search'
-import OtherButton from "../Buttons/OtherButton";
+import OtherButton from '../Buttons/OtherButton'
 const MainPage = () => {
   const limit = 100
   const [page, setPage] = useState(1)
@@ -46,18 +46,26 @@ const MainPage = () => {
           <CryptoList items={[...cryptos.data]} />
           <div className={styles.pageButtons}>
             {page > 1 ? (
-                <div onClick={() => {handlePrevClick()}}>
-                  <OtherButton text={'Go to previous page'} />
-                </div>
+              <div
+                onClick={() => {
+                  handlePrevClick()
+                }}
+              >
+                <OtherButton text={'Go to previous page'} />
+              </div>
             ) : (
-                <OtherButton text={'Go to previous page'} disabled={true}/>
+              <OtherButton text={'Go to previous page'} disabled={true} />
             )}
             {isAvailable() ? (
-                <div onClick={() => {handleNextClick()}}>
-                  <OtherButton text={'Go to next page'} />
-                </div>
+              <div
+                onClick={() => {
+                  handleNextClick()
+                }}
+              >
+                <OtherButton text={'Go to next page'} />
+              </div>
             ) : (
-                <OtherButton text={'Go to next page'} disabled={true}/>
+              <OtherButton text={'Go to next page'} disabled={true} />
             )}
           </div>
         </>

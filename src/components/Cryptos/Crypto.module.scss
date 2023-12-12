@@ -4,6 +4,19 @@
   justify-content: center;
 }
 
+@media (max-width: 1150px) {
+  td:nth-child(1),
+  th:nth-child(1),
+  td:nth-child(3),
+  th:nth-child(3),
+  td:nth-child(5),
+  th:nth-child(5),
+  td:nth-child(6),
+  th:nth-child(6) {
+    display: none;
+  }
+}
+
 table {
   width: 100%;
   margin-top: 20px;
@@ -60,42 +73,28 @@ td {
   margin-left: 5px;
 }
 
-table button,
-.coinButton {
-  background-color: #ffd399;
-}
-
-table button:hover,
-.coinButton:hover {
-  background-color: #eebc7b;
-}
-
 .coinContainer {
-  margin: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
   display: flex;
-  flex-direction: column;
 }
 
-.coinHeader {
-  margin: 5px;
-  font-weight: bold;
-}
-
-.coinContainer div {
-  margin: 5px;
-  display: flex;
-  justify-content: flex-start;
-  justify-items: center;
+@media (max-width: 1150px) {
+  .headerCoinPrice {
+    font-size: 15px;
+  }
 }
 
 .headerCoinContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .headerCoinTitle {
-  margin: 0 20px 20px 0;
+  margin: 5%;
   font-weight: bold;
   font-size: 32px;
   font-style: italic;
@@ -117,4 +116,58 @@ table button:hover,
   font-weight: bold;
   font-size: 28px;
   color: black;
+}
+
+.singleCoinName {
+  font-weight: bold;
+}
+
+.singleCoinSymbol {
+  font-weight: bold;
+  color: #adacac;
+}
+
+.singleCoinNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 50px;
+}
+
+.buttonContainer {
+  max-width: 120px;
+  margin-left: 20px;
+}
+
+.singleCoinInfoContainer {
+  margin: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.singleCoinInfoHeader {
+  font-style: italic;
+  font-weight: bold;
+}
+
+select {
+  font-family: Abel;
+  margin: 15px;
+  width: 150px;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.chart {
+  min-width: 60%;
+  max-width: 100%;
+}
+
+.singleCoinChartSelect {
+  margin-top: 40px;
 }

@@ -8,14 +8,15 @@ import AreaChart from '../Charts/AreaChart'
 import moment from 'moment'
 import ButtonAdd from '../Buttons/ButtonAdd'
 import Modal from '../Modals/Modal'
-import OtherButton from "../Buttons/OtherButton";
+import OtherButton from '../Buttons/OtherButton'
+import Header from '../Header/Header'
 
 const SingleCrypto = () => {
   const [interval] = useState('m5')
   const { id } = useParams()
   const navigate = useNavigate()
   const [end, setEnd] = useState(moment().valueOf())
-  const [start, setStart] = useState(moment().subtract(1, 'day').valueOf())
+  const [start, setStart] = useState(moment().subtract(1, 'hour').valueOf())
   const historyQuery = id
     ? cryptosAPI.useFetchCryptoHistoryQuery({ id: id, interval: interval, start: start, end: end })
     : { data: undefined }
@@ -35,6 +36,7 @@ const SingleCrypto = () => {
   return (
     <div className={globalStyles.app}>
       <Modal />
+      <Header />
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
@@ -42,59 +44,74 @@ const SingleCrypto = () => {
       ) : data ? (
         <>
           <div className={styles.coinContainer}>
-            <h1>{data.data.name}</h1>
-            <ButtonAdd coin={data.data} />
             <div>
-              <div className={styles.coinHeader}>Symbol:</div>
-              <div>{data.data.symbol}</div>
-            </div>
-            <div>
-              <div className={styles.coinHeader}>Rank:</div>
-              <div>{data.data.rank}</div>
-            </div>
-            <div>
-              <div className={styles.coinHeader}>Supply:</div>
-              <div>{parseFloat(data.data.supply).toLocaleString() + ' ' + data.data.symbol}</div>
-            </div>
-            <div>
-              <div className={styles.coinHeader}>Price: </div>
-              <div>
-                {parseFloat(data.data.priceUsd)
-                  .toFixed(2)
-                  .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
-                $
+              <div className={styles.singleCoinNameContainer}>
+                <div className={styles.singleCoinName}>
+                  {data.data.rank}. {data.data.name}
+                </div>
+                <div className={styles.singleCoinSymbol}>{data.data.symbol}</div>
+              </div>
+              <div className={styles.singleCoinInfoContainer}>
+                <div className={styles.singleCoinInfoHeader}>Total supply:</div>
+                <div>{parseFloat(data.data.supply).toLocaleString() + ' ' + data.data.symbol}</div>
+              </div>
+              <div className={styles.singleCoinInfoContainer}>
+                <div className={styles.singleCoinInfoHeader}>Max supply:</div>
+                <div>
+                  {data.data.maxSupply ? (
+                    parseFloat(data.data.maxSupply).toLocaleString() + ' ' + data.data.symbol
+                  ) : (
+                    <>No info.</>
+                  )}
+                </div>
+              </div>
+              <div className={styles.singleCoinInfoContainer}>
+                <div className={styles.singleCoinInfoHeader}>Total price: </div>
+                <div>
+                  {parseFloat(data.data.priceUsd)
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
+                  $
+                </div>
+              </div>
+              <div className={styles.singleCoinInfoContainer}>
+                <div className={styles.singleCoinInfoHeader}>Market Cap: </div>
+                <div>
+                  {data.data.marketCapUsd ? (
+                    parseFloat(data.data.marketCapUsd)
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, '$&,') + ' $'
+                  ) : (
+                    <>No info.</>
+                  )}
+                </div>
+              </div>
+              <div className={styles.buttonContainer}>
+                <ButtonAdd coin={data.data} />
+              </div>
+              <div className={styles.singleCoinChartSelect}>
+                <div className={styles.singleCoinInfoHeader}>Select a range for chart:</div>
+                <select onChange={handleSelectChange}>
+                  <option id={'hour'}>hour</option>
+                  <option id={'12 hours'}>12 hours</option>
+                  <option id={'1 day'}>1 day</option>
+                </select>
               </div>
             </div>
-            <div>
-              <div className={styles.coinHeader}>Market Capitalization: </div>
-              <div>
-                {parseFloat(data.data.marketCapUsd)
-                  .toFixed(2)
-                  .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
-                $
-              </div>
+            <div className={styles.chart}>
+              {histories ? (
+                <AreaChart histories={histories.data} />
+              ) : (
+                <>History is not available.</>
+              )}
             </div>
-            <div>
-              <div className={styles.coinHeader}>Max supply:</div>
-              <div>
-                {data.data.maxSupply ? (
-                  parseFloat(data.data.maxSupply).toLocaleString() + ' ' + data.data.symbol
-                ) : (
-                  <>No info.</>
-                )}
-              </div>
-            </div>
-            <div>
-              <select onChange={handleSelectChange}>
-                <option id={'1 day'}>1 day</option>
-                <option id={'12 hours'}>12 hours</option>
-                <option id={'hour'}>hour</option>
-              </select>
-            </div>
-            {histories ? <AreaChart histories={histories.data} /> : <>History is not available.</>}
           </div>
-          <div onClick={() => {handleBackClick()}}>
-            <OtherButton text={'Go back'}/>
+          <div
+            onClick={() => {
+              handleBackClick()
+            }}
+          >
+            <OtherButton text={'Go back'} />
           </div>
         </>
       ) : null}

@@ -1,12 +1,15 @@
 .portfolioTitle {
+  margin-top: 20px;
   font-weight: bold;
   font-size: 35px;
+  text-align: center;
 }
 
 .portfolioPrice {
   font-size: 32px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .portfolioPriceNumber {
@@ -18,10 +21,12 @@
 }
 
 .portfolioClickMe {
+  text-align: center;
   cursor: pointer;
   word-wrap: break-word;
   color: gray;
   text-decoration: underline;
+  margin-bottom: 20px;
 }
 
 .portfolioContainer {
