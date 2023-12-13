@@ -28,16 +28,20 @@ const PortfolioModal: FC<PortfolioProps> = ({ closeModal }) => {
         <div onClick={closeModal} className={styles.closeButton}>
           ✖
         </div>
-        <div className={styles.title}>Your portfolio: </div>
+        <div className={styles.modalHeader}>
+          <div className={styles.title}>Your portfolio: </div>
+        </div>
         {coins.length && Array.isArray(coins) ? (
-          <div>
-            {coins.map((coin) => (
-              <div className={styles.coin} key={coin.name}>
-                {coin.coinName}{' '}
-                {(parseFloat(coin.price) * parseFloat(coin.amount))
-                  .toFixed(2)
-                  .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
-                $
+          <div className={styles.modalBody}>
+            {coins.map((coin, index) => (
+              <div className={styles.modalCoin} key={index}>
+                <div className={styles.modalCoinName}>{coin.coinName}</div>{' '}
+                <div>
+                  {(parseFloat(coin.price) * parseFloat(coin.amount))
+                    .toFixed(2)
+                    .replace(/\d(?=(\d{3})+\.)/g, '$&,')}{' '}
+                  $
+                </div>
                 <div
                   onClick={() => {
                     handleDeleteClick(coin)

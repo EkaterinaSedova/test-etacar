@@ -11,9 +11,8 @@ interface Coin {
   amount: number
 }
 
-const ButtonDelete: FC<ButtonProps> = ({ coin, amount }) => {
+const ButtonDelete: FC<ButtonProps> = ({ coin }) => {
   const handleClick = () => {
-    console.log(coin, amount)
     let coins = []
     const portfolioItem = localStorage.getItem('portfolio')
     if (portfolioItem) {
@@ -32,7 +31,6 @@ const ButtonDelete: FC<ButtonProps> = ({ coin, amount }) => {
       const newPortfolio = JSON.stringify(coins)
       localStorage.setItem('portfolio', newPortfolio)
     }
-    console.log(coins)
   }
   return (
     <div

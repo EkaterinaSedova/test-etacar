@@ -23,8 +23,21 @@
   padding: 20px;
 }
 
-.modalContent div {
-  margin: 10px;
+.modalHeader {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalBody {
+  min-width: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  border: 1px solid lightgray;
 }
 
 .title {
@@ -38,10 +51,40 @@
   align-self: flex-end;
 }
 
-.coin {
+.modalCoin {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid lightgray;
+  padding: 5px;
   border-bottom: 1px solid lightgray;
+}
+
+.modalCoinName {
+  font-weight: bold;
+}
+
+.modalCoinPrice {
+  font-style: italic;
+}
+
+.modalProperty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modalFooter {
+  margin-top: 15px;
+}
+
+.modalInput {
+  font-family: Abel;
+  padding: 5px;
+  font-size: 15px;
+  font-style: italic;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 0 5px;
+  width: 25%;
 }
