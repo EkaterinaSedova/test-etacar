@@ -31,6 +31,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(a.priceUsd) - parseFloat(b.priceUsd))
         setCryptos(sortedCryptos)
         setPrice('↑')
+        setCap('=')
+        setPercent('=')
         break
       }
       case '=': {
@@ -39,6 +41,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(a.priceUsd) - parseFloat(b.priceUsd))
         setCryptos(sortedCryptos)
         setPrice('↑')
+        setCap('=')
+        setPercent('=')
         break
       }
       case '↑': {
@@ -47,6 +51,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(b.priceUsd) - parseFloat(a.priceUsd))
         setCryptos(sortedCryptos)
         setPrice('↓')
+        setCap('=')
+        setPercent('=')
         break
       }
     }
@@ -59,6 +65,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(a.marketCapUsd) - parseFloat(b.marketCapUsd))
         setCryptos(sortedCryptos)
         setCap('↑')
+        setPrice('=')
+        setPercent('=')
         break
       }
       case '=': {
@@ -67,6 +75,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(a.marketCapUsd) - parseFloat(b.marketCapUsd))
         setCryptos(sortedCryptos)
         setCap('↑')
+        setPrice('=')
+        setPercent('=')
         break
       }
       case '↑': {
@@ -75,6 +85,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .sort((a, b) => parseFloat(b.marketCapUsd) - parseFloat(a.marketCapUsd))
         setCryptos(sortedCryptos)
         setCap('↓')
+        setPrice('=')
+        setPercent('=')
         break
       }
     }
@@ -86,6 +98,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .slice()
           .sort((a, b) => parseFloat(a.changePercent24Hr) - parseFloat(b.changePercent24Hr))
         setCryptos(sortedCryptos)
+        setCap('=')
+        setPrice('=')
         setPercent('↑')
         break
       }
@@ -94,6 +108,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .slice()
           .sort((a, b) => parseFloat(a.changePercent24Hr) - parseFloat(b.changePercent24Hr))
         setCryptos(sortedCryptos)
+        setCap('=')
+        setPrice('=')
         setPercent('↑')
         break
       }
@@ -102,6 +118,8 @@ const CryptoList: FC<AssetsListProps> = ({ items }) => {
           .slice()
           .sort((a, b) => parseFloat(b.changePercent24Hr) - parseFloat(a.changePercent24Hr))
         setCryptos(sortedCryptos)
+        setCap('=')
+        setPrice('=')
         setPercent('↓')
         break
       }

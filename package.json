@@ -1,7 +1,7 @@
 {
   "name": "test-etacar",
   "version": "0.1.0",
-  "homepage": "https://EkaterinaSedova.github.io/test-etacar/main",
+  "homepage": "https://EkaterinaSedova.github.io/test-etacar",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
