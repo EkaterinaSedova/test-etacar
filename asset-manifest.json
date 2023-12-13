@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/test-etacar/static/css/main.c0dc9d25.css",
-    "main.js": "/test-etacar/static/js/main.8c58f7c6.js",
+    "main.js": "/test-etacar/static/js/main.d03a531d.js",
     "index.html": "/test-etacar/index.html",
     "main.c0dc9d25.css.map": "/test-etacar/static/css/main.c0dc9d25.css.map",
-    "main.8c58f7c6.js.map": "/test-etacar/static/js/main.8c58f7c6.js.map"
+    "main.d03a531d.js.map": "/test-etacar/static/js/main.d03a531d.js.map"
   },
   "entrypoints": [
     "static/css/main.c0dc9d25.css",
-    "static/js/main.8c58f7c6.js"
+    "static/js/main.d03a531d.js"
   ]
 }
