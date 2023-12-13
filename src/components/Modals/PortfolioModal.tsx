@@ -31,7 +31,7 @@ const PortfolioModal: FC<PortfolioProps> = ({ closeModal }) => {
         <div className={styles.modalHeader}>
           <div className={styles.title}>Your portfolio: </div>
         </div>
-        {coins.length && Array.isArray(coins) ? (
+        {coins && Array.isArray(coins) ? (
           <div className={styles.modalBody}>
             {coins.map((coin, index) => (
               <div className={styles.modalCoin} key={index}>
