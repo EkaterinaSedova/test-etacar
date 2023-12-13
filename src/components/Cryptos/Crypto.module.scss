@@ -82,7 +82,7 @@ td {
 
 @media (max-width: 1150px) {
   .headerCoinPrice {
-    font-size: 15px;
+    font-size: 20px;
   }
 }
 
@@ -170,4 +170,10 @@ select {
 
 .singleCoinChartSelect {
   margin-top: 40px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

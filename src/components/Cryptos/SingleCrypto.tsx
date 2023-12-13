@@ -38,9 +38,20 @@ const SingleCrypto = () => {
       <Modal />
       <Header />
       {error ? (
-        <>Oh no, there was an error</>
+        <div className={styles.loader}>
+          <div>Oh no, there was an error</div>
+          <div
+            onClick={() => {
+              handleBackClick()
+            }}
+          >
+            <OtherButton text={'Go back'} />
+          </div>
+        </div>
       ) : isLoading ? (
-        <>Loading...</>
+        <>
+          <div className={styles.loader}>Loading...</div>
+        </>
       ) : data ? (
         <>
           <div className={styles.coinContainer}>
@@ -102,7 +113,7 @@ const SingleCrypto = () => {
               {histories ? (
                 <AreaChart histories={histories.data} />
               ) : (
-                <>History is not available.</>
+                <div className={styles.loader}>History is not available.</div>
               )}
             </div>
           </div>

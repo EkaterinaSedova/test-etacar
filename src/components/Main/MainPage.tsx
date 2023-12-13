@@ -37,9 +37,9 @@ const MainPage = () => {
       <Modal />
       <Header />
       {error ? (
-        <>Oh no, there was an error</>
+        <div className={styles.loader}>Oh no, there was an error</div>
       ) : isLoading ? (
-        <>Loading...</>
+        <div className={styles.loader}>Loading...</div>
       ) : cryptos ? (
         <>
           <Search />

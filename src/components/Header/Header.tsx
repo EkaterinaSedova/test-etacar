@@ -15,7 +15,7 @@ const Header = () => {
       {error ? (
         <>Oh no, there was an error</>
       ) : isLoading ? (
-        <>Loading...</>
+        <div className={styles.loader}>Loading...</div>
       ) : cryptos ? (
         <CryptoHeaderList items={cryptos.data} />
       ) : (
