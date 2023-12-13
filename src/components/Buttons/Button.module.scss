@@ -48,3 +48,25 @@
 .otherButtons button:disabled {
   background-color: #d5d5d5;
 }
+
+.deleteButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #de2020;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  min-width: 50px;
+  max-width: 100%;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.deleteButtonContainer:hover {
+  background-color: #a04545;
+}

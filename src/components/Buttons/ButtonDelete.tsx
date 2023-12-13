@@ -36,7 +36,7 @@ const ButtonDelete: FC<ButtonProps> = ({ coin, amount }) => {
   }
   return (
     <div
-      className={styles.buttonContainer}
+      className={styles.deleteButtonContainer}
       onClick={() => {
         handleClick()
       }}
