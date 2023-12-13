@@ -19,8 +19,10 @@ const PortfolioModal: FC<PortfolioProps> = ({ closeModal }) => {
   }
   const [coins, setCoins] = useState(portfolioItem ? JSON.parse(portfolioItem) : null)
   const handleDeleteClick = (coinToDelete: Coin) => {
-    const updatedCoins = coins.filter((coin: Coin) => coin !== coinToDelete)
-    setCoins(updatedCoins)
+    const updatedCoins = coins.filter((coin: Coin) => {
+      return !(coin.coinName === coinToDelete.coinName && coin.price === coinToDelete.price && coin.amount === coinToDelete.amount);
+    });
+    setCoins(updatedCoins);
   }
   return (
     <div className={styles.modal} onClick={handleModalClick}>
