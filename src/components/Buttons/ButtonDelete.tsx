@@ -27,10 +27,11 @@ const ButtonDelete: FC<ButtonProps> = ({ coin }) => {
     if (index !== -1) {
       coins.splice(index, 1)
     }
-    if (coins) {
+    if (coins.length) {
       const newPortfolio = JSON.stringify(coins)
       localStorage.setItem('portfolio', newPortfolio)
     }
+    else localStorage.removeItem('portfolio')
   }
   return (
     <div

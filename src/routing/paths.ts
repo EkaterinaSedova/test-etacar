@@ -1,3 +1,3 @@
-export const MAIN_ROUTE = '/test-etacar/main'
+export const MAIN_ROUTE = '/main'
 
-export const CRYPTO_ROUTE = '/test-etacar/coin'
+export const CRYPTO_ROUTE = '/coin'
